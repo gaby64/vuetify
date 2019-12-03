@@ -149,6 +149,9 @@ export default mixins(Colorable, Delayable, Dependent, Detachable, Menuable, Tog
     if (getSlotType(this, 'activator', true) === 'v-slot') {
       consoleError(`v-tooltip's activator slot must be bound, try '<template #activator="data"><v-btn v-on="data.on>'`, this)
     }
+    consoleError('test', this);
+    this.observer = new MutationObserver(mutations => this.updateDimensions());
+    this.observer.observe(this.$refs.content, { attributes: true, childList: true, characterData: true, subtree: true });
   },
 
   methods: {
