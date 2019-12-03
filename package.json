@@ -1,4 +1,6 @@
 {
+  "name": "vuetify",
+  "version": "2.1.14"
   "private": true,
   "workspaces": [
     "packages/*"
