@@ -52,6 +52,7 @@ export default mixins(Colorable, Delayable, Dependent, Detachable, Menuable, Tog
   data: () => ({
     calculatedMinWidth: 0,
     closeDependents: false,
+    observer: null
   }),
 
   computed: {
