@@ -51,8 +51,7 @@ export default mixins(Colorable, Delayable, Dependent, Detachable, Menuable, Tog
 
   data: () => ({
     calculatedMinWidth: 0,
-    closeDependents: false,
-    observer: new MutationObserver(mutations => this.updateDimensions())
+    closeDependents: false
   }),
 
   computed: {
@@ -151,7 +150,8 @@ export default mixins(Colorable, Delayable, Dependent, Detachable, Menuable, Tog
       consoleError(`v-tooltip's activator slot must be bound, try '<template #activator="data"><v-btn v-on="data.on>'`, this)
     }
     consoleError('test', this);
-    this.observer.observe(this.$refs.content, { attributes: true, childList: true, characterData: true, subtree: true });
+    let observer = new MutationObserver(mutations => this.updateDimensions())
+    observer.observe(this.$refs.content, { attributes: true, childList: true, characterData: true, subtree: true });
   },
 
   methods: {
